@@ -1,0 +1,5 @@
+name: 代码检查步骤
+uses: CodeArtsCheck
+with:
+  jobId: 43885d46e13d4bf583d3a648e9b39d1e
+  checkMode: full

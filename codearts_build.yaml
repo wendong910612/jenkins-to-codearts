@@ -1,0 +1,28 @@
+version: '2.0'
+steps:
+  PRE_BUILD:
+  - checkout:
+      name: 代码下载
+      inputs:
+        scm: codehub
+        url: https://codehub.devcloud.cn-north-4.huaweicloud.com/your-repo.git
+        branch: master
+        lfs: false
+        submodule: false
+  BUILD:
+  - maven:
+      name: Maven构建
+      image: cloudbuild@maven3.5.3-jdk8-open
+      inputs:
+        settings:
+          public_repos:
+          - https://mirrors.huawei.com/maven
+        cache: true
+        command: mvn mvn clean install -DskipTests
+        check:
+          project_dir: ./
+          settings: ~/.m2/settings.xml
+          param: ''
+  - upload_artifact:
+      inputs:
+        path: '**/target/*.?ar'

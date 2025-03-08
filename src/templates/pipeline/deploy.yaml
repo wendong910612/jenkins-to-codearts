@@ -1,0 +1,5 @@
+name: 应用部署
+uses: CodeArtsDeploy
+with:
+  jobId: 9c5a5cda6ffa4ab583380f5a014b2b31
+  customParam: value

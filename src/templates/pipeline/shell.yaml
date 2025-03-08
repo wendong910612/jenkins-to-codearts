@@ -1,0 +1,2 @@
+name: 执行Shell
+run: echo "执行命令"

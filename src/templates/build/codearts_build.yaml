@@ -1,0 +1,30 @@
+version: 2.0 # 必须是2.0，该版本号必填且唯一
+params: # 构建参数，可在构建过程中引用。如果不填写，则优先使用配置构建任务参数中的构建参数
+steps:
+  PRE_BUILD: # 用于做构建前的准备，例如下载代码，执行shell等
+    - checkout:
+        name: 代码下载 # 可选
+        inputs: # 步骤参数
+          scm: codehub # 代码来源:只支持Repo
+          url: xxxxxxxxx # 拉取的代码仓的ssh地址
+          branch: 'master' # 拉取的代码分支：支持参数化
+          lfs: false
+          submodule: false
+  BUILD: 
+    - maven:
+        name: Maven构建
+        image: cloudbuild@maven3.5.3-jdk8-open
+        inputs:
+          settings:
+            public_repos:
+              - https://mirrors.huawei.com/maven
+          cache: true
+          command: mvn package
+          check:
+            project_dir: ./
+            settings: ~/.m2/settings.xml
+            param: ''
+    - upload_artifact:
+        inputs:
+          path: "**/target/*.?ar"
+          version: 2.1

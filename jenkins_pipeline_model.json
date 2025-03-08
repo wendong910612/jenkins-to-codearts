@@ -1,0 +1,79 @@
+{
+  "name": "",
+  "parameters": [],
+  "environment": {
+    "PROJECT_NAME": "CodeArts-shopping",
+    "SONAR_SERVER": "SonarQube",
+    "DEPLOY_SERVER": "production-server",
+    "ARTIFACT_PATH": "shopping/target/demoapp.jar"
+  },
+  "agent": {
+    "type": "any"
+  },
+  "stages": [
+    {
+      "name": "代码检出",
+      "steps": [
+        {
+          "name": "Echo Message",
+          "type": "echo",
+          "command": "代码检出完成"
+        },
+        {
+          "name": "Checkout",
+          "type": "git",
+          "command": "checkout scm"
+        }
+      ]
+    },
+    {
+      "name": "代码检查",
+      "steps": [
+        {
+          "name": "Echo Message",
+          "type": "echo",
+          "command": "代码扫描完成"
+        }
+      ]
+    },
+    {
+      "name": "编译构建",
+      "steps": [
+        {
+          "name": "Shell Command",
+          "type": "sh",
+          "command": "mvn clean install -DskipTests"
+        },
+        {
+          "name": "Echo Message",
+          "type": "echo",
+          "command": "编译构建完成"
+        }
+      ]
+    },
+    {
+      "name": "Deploy",
+      "steps": [
+        {
+          "name": "Shell Command",
+          "type": "sh",
+          "command": "echo '开始部署'"
+        },
+        {
+          "name": "Echo Message",
+          "type": "echo",
+          "command": "开始部署"
+        }
+      ]
+    }
+  ],
+  "build_steps": [
+    {
+      "name": "Maven构建",
+      "type": "maven",
+      "command": "mvn clean install -DskipTests",
+      "stage": "编译构建"
+    }
+  ],
+  "scm": {}
+}

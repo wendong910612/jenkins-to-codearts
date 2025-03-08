@@ -1,0 +1,91 @@
+{
+  "_links": {
+    "self": {
+      "href": "/job/shopping-jenkinsfile/8/wfapi/describe"
+    },
+    "changesets": {
+      "href": "/job/shopping-jenkinsfile/8/wfapi/changesets"
+    }
+  },
+  "id": "8",
+  "name": "#8",
+  "status": "SUCCESS",
+  "startTimeMillis": 1741359977953,
+  "endTimeMillis": 1741359999650,
+  "durationMillis": 21697,
+  "queueDurationMillis": 6,
+  "pauseDurationMillis": 0,
+  "stages": [
+    {
+      "_links": {
+        "self": {
+          "href": "/job/shopping-jenkinsfile/8/execution/node/6/wfapi/describe"
+        }
+      },
+      "id": "6",
+      "name": "Declarative: Checkout SCM",
+      "execNode": "",
+      "status": "SUCCESS",
+      "startTimeMillis": 1741359981708,
+      "durationMillis": 7489,
+      "pauseDurationMillis": 0
+    },
+    {
+      "_links": {
+        "self": {
+          "href": "/job/shopping-jenkinsfile/8/execution/node/15/wfapi/describe"
+        }
+      },
+      "id": "15",
+      "name": "代码检出",
+      "execNode": "",
+      "status": "SUCCESS",
+      "startTimeMillis": 1741359989287,
+      "durationMillis": 3409,
+      "pauseDurationMillis": 0
+    },
+    {
+      "_links": {
+        "self": {
+          "href": "/job/shopping-jenkinsfile/8/execution/node/21/wfapi/describe"
+        }
+      },
+      "id": "21",
+      "name": "编译构建",
+      "execNode": "",
+      "status": "SUCCESS",
+      "startTimeMillis": 1741359992720,
+      "durationMillis": 6268,
+      "pauseDurationMillis": 0
+    },
+    {
+      "_links": {
+        "self": {
+          "href": "/job/shopping-jenkinsfile/8/execution/node/27/wfapi/describe"
+        }
+      },
+      "id": "27",
+      "name": "部署",
+      "execNode": "",
+      "status": "SUCCESS",
+      "startTimeMillis": 1741359999015,
+      "durationMillis": 358,
+      "pauseDurationMillis": 0
+    },
+    {
+      "_links": {
+        "self": {
+          "href": "/job/shopping-jenkinsfile/8/execution/node/33/wfapi/describe"
+        }
+      },
+      "id": "33",
+      "name": "Declarative: Post Actions",
+      "execNode": "",
+      "status": "SUCCESS",
+      "startTimeMillis": 1741359999400,
+      "durationMillis": 111,
+      "pauseDurationMillis": 0
+    }
+  ],
+  "parameters": []
+}

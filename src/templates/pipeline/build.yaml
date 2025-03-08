@@ -1,0 +1,6 @@
+name: 编译构建步骤
+uses: CodeArtsBuild
+with:
+  jobId: 878b4d13cb284d9e8f33f988a902f57c
+  artifactIdentifier: my_pkg
+  customParam: value

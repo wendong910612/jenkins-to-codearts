@@ -1,0 +1,6 @@
+name: 接口测试
+uses: CodeArtsTestPlan
+with:
+  jobId: vb180000vnrgoeib
+  environmentModel: 1
+  environmentId: 7c2eff2377584811b7981674900158e8

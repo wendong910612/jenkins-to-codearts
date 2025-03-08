@@ -1,0 +1,49 @@
+# Jenkins 构建步骤到 CodeArts 构建模板映射
+maven_stages:
+  - "Maven Deploy"
+  - "Build"
+  - "Maven Build"
+  - "Compile"
+  - "Package"
+  - "Maven"
+
+# 可以添加其他需要特殊处理的阶段类型
+docker_stages:
+  - "Image Build"
+  - "Docker Build"
+
+# 需要转换为sh步骤的阶段
+sh_stages:
+  - "Unit Test"
+  - "Sonar Scan"
+  - "Unit Swagger"
+  - "Sonar Scan: Swagger"
+  - "Sonar Scan: Base"
+  - "Inc Unit Test"
+
+# 需要忽略的阶段（不会生成任何步骤）
+ignore_stages:
+  - "Preparation"
+  - "Checkout"
+  - "Checkout Code"
+  - "Pull Build Template"
+  - "Check Status"
+  - "IncUnit Image Report"
+  - "Build Image"
+  - "Push Image"
+  - "Inc Unit Test"
+  - "Inc Unit Test Report"
+  - "Inc Unit Test: Swagger"
+  - "Inc Unit Test: Base"
+  - "Inc Unit Test Report: Swagger"
+  - "Inc Unit Test Report: Base"
+  - "Inc Unit Test Report: Base"
+  - "Inc Unit Test Report: Base"
+  - "Declarative: Post Actions"
+
+# 构建关键字映射
+keywords:
+  maven_build: ["mvn", "maven", "package", "compile"]
+  gradle_build: ["gradle", "gradlew"]
+  npm_build: ["npm", "yarn", "node"]
+  docker_build: ["docker build", "kaniko"]

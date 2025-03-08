@@ -1,0 +1,25 @@
+env:
+  projectVersion: 1.0.0
+  appName: ''
+  gitBranch: main
+  project_name: CodeArts-shopping
+  sonar_server: SonarQube
+  deploy_server: production-server
+  artifact_path: shopping/target/demoapp.jar
+jobs:
+  build:
+    name: 编译构建
+    steps:
+    - name: 编译构建步骤
+      uses: CodeArtsBuild
+      with:
+        jobId: 878b4d13cb284d9e8f33f988a902f57c
+        artifactIdentifier: my_pkg
+        customParam: value
+  deploy:
+    name: Deploy
+    steps:
+    - name: 执行Deploy
+      run: echo "执行Deploy阶段..."
+    needs:
+    - build

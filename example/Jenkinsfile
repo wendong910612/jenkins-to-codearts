@@ -1,0 +1,74 @@
+// CodeArts-shopping 项目的 Jenkins 流水线配置
+// 包含代码检出、代码扫描、编译构建和部署阶段
+
+pipeline {
+    agent any
+    
+    tools {
+        maven 'Maven3'
+        jdk 'JDK8'
+    }
+    
+    environment {
+        // 定义环境变量
+        PROJECT_NAME = 'CodeArts-shopping'
+        SONAR_SERVER = 'SonarQube'
+        DEPLOY_SERVER = 'production-server'
+        ARTIFACT_PATH = 'shopping/target/demoapp.jar'
+    }
+    
+    stages {
+        stage('代码检出') {
+            steps {
+                // 从Git仓库拉取代码
+                checkout scm
+                echo '代码检出完成'
+            }
+        }
+        
+        stage('代码检查') {
+            steps {
+                echo '代码扫描完成'
+            }
+        }
+        
+        stage('编译构建') {
+            steps {
+                // 使用Maven进行项目构建
+                sh '''
+                    mvn clean install -DskipTests
+                '''
+                echo '编译构建完成'
+            
+            }
+        }
+        
+
+        stage('Deploy') {
+            steps {
+                // 部署到服务器
+                sshagent(['deploy-key']) {
+                    sh """
+                        echo '开始部署'
+                    """
+                }
+                echo '部署完成'
+            }
+        }
+    }
+    
+    post {
+        success {
+            // 构建成功后的操作
+            echo '流水线执行成功!'
+        }
+        failure {
+            // 构建失败后的操作
+            echo '流水线执行失败!'
+        }
+        always {
+            // 清理工作区
+            cleanWs()
+        }
+    }
+}

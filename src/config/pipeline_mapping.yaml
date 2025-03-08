@@ -1,0 +1,44 @@
+# Jenkins 流水线步骤到 CodeArts 模板映射
+stages:
+  
+  - jenkins_stage: "编译构建"
+    template: "build"
+
+
+# 需要转换为sh步骤的阶段
+sh_stages:
+  - "Deploy"
+
+# 需要忽略的阶段（不会生成任何步骤）
+ignore_stages:
+  - "代码检出"
+  - "代码检查"
+  - "Checkout Code"
+  - "Pull Build Template"
+  - "Check Status"
+  - "IncUnit Image Report"
+  - "Build Image"
+  - "Push Image"
+  - "Inc Unit Test"
+  - "Inc Unit Test Report"
+  - "Inc Unit Test: Swagger"
+  - "Inc Unit Test: Base"
+  - "Inc Unit Test Report: Swagger"
+  - "Inc Unit Test Report: Base"
+  - "Inc Unit Test Report: Base"
+  - "Inc Unit Test Report: Base"
+  - "Declarative: Post Actions"
+  - "Sonar Scan"
+  - "Unit Swagger"
+  - "Sonar Scan: Swagger"
+  - "Sonar Scan: Base"
+  - "Inc Unit Test"
+
+# 关键字到模板映射
+keywords:
+  build: ["gradle", "npm", "package", "compile"]
+  test_plan: ["test"]
+  code_check: ["sonarqube", "code analysis"]
+  deploy: ["deploy", "kubectl", "helm"]
+
+#docker: ["docker build", "kaniko"]
